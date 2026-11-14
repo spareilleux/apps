@@ -26,6 +26,7 @@ const resources = {
     exportCopy: 'Copier pour IxForge', exportCopied: 'Copié. Collez-le dans IxForge, champ « nouvel outil ».', exportCopyHere: 'Copiez ce texte, puis collez-le dans IxForge :', exportMade: 'Widget IxForge · fonctionne seul, sans réseau.',
     ixlet_uncertain: 'Résultat incertain : rien n’est renvoyé automatiquement, la valeur va être relue sur le Desktop.', ixlet_not_active: 'Cet outil n’est pas encore actif sur le Desktop.', ixlet_not_saved: 'Cet outil n’est pas encore enregistré sur le Desktop.', ixlet_not_connected: 'Connectez cet appareil au Desktop pour utiliser cet outil partagé.', ixlet_item_missing: 'Cet élément n’existe plus sur le Desktop.',
     voiceReady: '', voiceUnsupported: 'Dictée locale indisponible dans ce navigateur, aucune voix n’a été envoyée. Utilisez le micro de votre clavier : les guillemets sont facultatifs.', voiceDenied: 'Accès au microphone refusé ou indisponible.', voiceListening: 'Dictée locale en cours…', voicePackMissing: 'Le pack de reconnaissance locale de cette langue n’est pas installé dans ce navigateur. Rien n’a été téléchargé ni envoyé.', installVoice: 'Installer la reconnaissance locale', stopDictation: 'Arrêter la dictée', voicePackDownloading: 'Le navigateur télécharge le pack de reconnaissance locale…', voicePackFailed: 'Le navigateur n’a pas installé le pack local.', voiceNoSpeech: 'Aucune parole détectée. Réessayez ; aucune voix n’a été envoyée.', voiceNoMicrophone: 'Aucun microphone utilisable sur cet appareil.', voiceFailed: 'La dictée locale s’est arrêtée (erreur : {{code}}).',
+    terminal: 'Terminal du PC', terminalWho: 'Commandes exécutées sur le PC du Desktop par Windows PowerShell, sous le compte du service IxForge.', terminalCommand: 'Commande', terminalRun: 'Exécuter', terminalHelp: 'Une commande à la fois, arrêtée après 30 secondes, sortie limitée à 256 Kio. Chaque commande est inscrite au journal du Desktop ; sa sortie n’est conservée nulle part, ni ici ni sur le Desktop.', terminalExit: 'Code de sortie : {{code}}', terminalTimedOut: 'Arrêtée après 30 secondes', terminalTruncated: 'sortie tronquée', terminal_not_allowed: 'Cet appareil n’a pas le terminal : seul le propriétaire peut l’autoriser, depuis la page propriétaire.', terminal_uncertain: 'Résultat incertain : la commande a pu s’exécuter sur le PC. Rien n’est renvoyé automatiquement.',
     settings: 'Réglages', aiTitle: 'IA (facultative)', aiHelp: 'Avec votre propre clé API Claude, une phrase devient un outil. La clé reste sur cet appareil ; la demande part directement de ce navigateur vers Claude, et son coût est facturé sur votre clé. Sans clé, IxForge fonctionne entièrement.', aiKey: 'Clé API Claude', aiSave: 'Enregistrer la clé', aiForget: 'Oublier la clé', aiKeyKept: 'Clé enregistrée sur cet appareil (…{{end}}).', aiNoKey: 'Aucune clé : l’IA est désactivée.', aiCreate: 'Créer avec l’IA', aiCreateHelp: 'Créer avec l’IA : décrivez l’outil dans le champ, Claude le fabrique', aiWorking: 'Claude fabrique l’outil…',
     ai_key_invalid: 'Claude refuse cette clé. Vérifiez-la ou remplacez-la.', ai_refused: 'Claude n’a pas fabriqué cet outil. Reformulez la demande.', ai_busy: 'Claude est occupé ou limité pour cette clé. Réessayez dans un moment ; rien n’a été créé.', ai_failed: 'Claude n’a pas rendu un outil utilisable. Rien n’a été créé.', ai_unreachable: 'Claude est injoignable (réseau). Rien n’a été créé.', ai_key_format: 'Cette clé ne ressemble pas à une clé API Claude (sk-ant-…).', ai_key_missing: 'Ajoutez d’abord votre clé Claude.',
     import_invalid: 'Ce n’est pas un widget IxForge lisible (format ixforge-widget/1).', name_invalid: 'Nom vide ou trop long (240 octets au plus).', revision_conflict: 'Résolvez le conflit avant d’envoyer cette version.', access_already_present: 'Un accès existe déjà sur cet appareil.', invite_invalid_or_expired: 'Code expiré, invalide ou déjà utilisé. Demandez un nouveau QR au Desktop.', not_admin: 'Cet appareil n’administre pas les autres.', local_storage_unavailable: 'Le stockage local est indisponible : rien n’a pu être conservé.', error: 'Action impossible pour le moment. Vos données déjà gardées sont conservées.'
@@ -50,6 +51,7 @@ const resources = {
     exportCopy: 'Copy for IxForge', exportCopied: 'Copied. Paste it into IxForge, “new tool” field.', exportCopyHere: 'Copy this text, then paste it into IxForge:', exportMade: 'IxForge widget · works on its own, offline.',
     ixlet_uncertain: 'Uncertain result: nothing is resent automatically; the value will be reread from Desktop.', ixlet_not_active: 'This tool is not active on Desktop yet.', ixlet_not_saved: 'This tool is not saved on Desktop yet.', ixlet_not_connected: 'Connect this device to Desktop to use this shared tool.', ixlet_item_missing: 'This item no longer exists on Desktop.',
     voiceReady: '', voiceUnsupported: 'On-device dictation is unavailable in this browser; no voice was sent. Use the keyboard microphone: quotes are optional.', voiceDenied: 'Microphone access denied or unavailable.', voiceListening: 'On-device dictation in progress…', voicePackMissing: 'This browser has no on-device recognition pack for this language. Nothing was downloaded or sent.', installVoice: 'Install on-device recognition', stopDictation: 'Stop dictation', voicePackDownloading: 'The browser is downloading the on-device recognition pack…', voicePackFailed: 'The browser did not install the on-device pack.', voiceNoSpeech: 'No speech detected. Try again; no voice was sent.', voiceNoMicrophone: 'No usable microphone on this device.', voiceFailed: 'On-device dictation stopped (error: {{code}}).',
+    terminal: 'PC terminal', terminalWho: 'Commands run on the Desktop’s PC by Windows PowerShell, as the IxForge service’s account.', terminalCommand: 'Command', terminalRun: 'Run', terminalHelp: 'One command at a time, stopped after 30 seconds, output capped at 256 KiB. Each command is written to the Desktop’s journal; its output is kept nowhere, neither here nor on the Desktop.', terminalExit: 'Exit code: {{code}}', terminalTimedOut: 'Stopped after 30 seconds', terminalTruncated: 'output truncated', terminal_not_allowed: 'This device has no terminal: only the owner can allow it, from the owner page.', terminal_uncertain: 'Uncertain result: the command may have run on the PC. Nothing is resent automatically.',
     settings: 'Settings', aiTitle: 'AI (optional)', aiHelp: 'With your own Claude API key, a sentence becomes a tool. The key stays on this device; the request goes straight from this browser to Claude, and its cost is billed to your key. Without a key, IxForge works fully.', aiKey: 'Claude API key', aiSave: 'Save the key', aiForget: 'Forget the key', aiKeyKept: 'Key kept on this device (…{{end}}).', aiNoKey: 'No key: AI is off.', aiCreate: 'Create with AI', aiCreateHelp: 'Create with AI: describe the tool in the field, Claude makes it', aiWorking: 'Claude is making the tool…',
     ai_key_invalid: 'Claude refuses this key. Check or replace it.', ai_refused: 'Claude did not make this tool. Rephrase the request.', ai_busy: 'Claude is busy or rate-limited for this key. Try again in a moment; nothing was created.', ai_failed: 'Claude did not return a usable tool. Nothing was created.', ai_unreachable: 'Claude is unreachable (network). Nothing was created.', ai_key_format: 'This does not look like a Claude API key (sk-ant-…).', ai_key_missing: 'Add your Claude key first.',
     import_invalid: 'This is not a readable IxForge widget (format ixforge-widget/1).', name_invalid: 'Empty or too long name (240 bytes at most).', revision_conflict: 'Resolve the conflict before sending this version.', access_already_present: 'This device already has access credentials.', invite_invalid_or_expired: 'Code expired, invalid or already used. Request a new Desktop QR.', not_admin: 'This device does not administer the others.', local_storage_unavailable: 'Local storage unavailable: nothing could be kept.', error: 'This action could not finish. Previously saved local data is retained.'
@@ -59,6 +61,8 @@ const $ = id => document.getElementById(id);
 const t = (key, options) => globalThis.i18next.t(key, options);
 let replica, engine, voice = null, voiceStatus = 'voiceReady', voiceDetail = '', installPrompt = null, replaceAccess = false, updates = null, pendingActions = 0, updateState = '', branding;
 let view = {mode: 'app'}, adminDevices = [];
+// The terminal's runs live in this page's memory only: never in the replica, never sent anywhere else.
+let terminalOpen = false, terminalRuns = [];
 const detached = {}; // tool key → last heartbeat of the window it is detached in
 const channel = 'BroadcastChannel' in globalThis ? new BroadcastChannel('ix-workshop') : null;
 
@@ -145,6 +149,14 @@ async function render() {
     ${!d.self && d.status === 'approved' ? html`<button class="ghost" data-decide="revoked" @click=${() => decide(d.id, 'revoked')}>${t('revoke')}</button>` : nothing}
   </li>`)}`, $('device-list'));
 
+  // The terminal, for the device the owner allowed (terminal.go).
+  const terminal = engine.terminal && !standalone() && view.mode === 'app';
+  if (!terminal) terminalOpen = false;
+  $('terminal-open').hidden = !terminal; $('terminal-open').setAttribute('aria-pressed', String(terminalOpen));
+  $('terminal').hidden = !terminalOpen;
+  draw(html`${terminalRuns.map(r => html`<article data-run><pre class="cmd">&gt; ${r.command}</pre><pre data-run-output>${r.output}</pre>
+    <p data-run-exit class=${r.exit_code === 0 ? 'ok' : 'bad'}>${r.timed_out ? t('terminalTimedOut') : t('terminalExit', {code: r.exit_code})}${r.truncated ? ' · ' + t('terminalTruncated') : ''}</p></article>`)}`, $('terminal-log'));
+
   // The rail: every tool, by name, with its count.
   const list = tools(state), tool = currentTool(state, list);
   draw(html`${list.map(x => { const rt = runtime(state, x); return html`<button data-tool=${x.key} aria-current=${String(x.key === tool?.key)} title=${x.widget.title} @click=${() => select(x.key)}>
@@ -160,15 +172,15 @@ async function render() {
   }
 
   // The stage: the selected tool takes the rest of the screen.
-  $('empty').hidden = Boolean(tool) || view.mode === 'surface';
-  $('stage').hidden = !tool || view.mode === 'surface';
+  $('empty').hidden = Boolean(tool) || view.mode === 'surface' || terminalOpen;
+  $('stage').hidden = !tool || view.mode === 'surface' || terminalOpen;
   const project = tool && state.projects[tool.projectID];
-  $('conflict').hidden = !project?.conflict || view.mode === 'surface';
+  $('conflict').hidden = !project?.conflict || view.mode === 'surface' || terminalOpen;
   if (project?.conflict) {
     $('keep-local').disabled = $('use-desktop').disabled = !project.remote;
     $('remote-title').textContent = project.remote ? t('remoteTitle', {title: project.remote.project.title, revision: project.remote.revision}) : '';
   }
-  if (!tool || view.mode === 'surface') return;
+  if (!tool || view.mode === 'surface' || terminalOpen) return;
   const rt = runtime(state, tool);
   const title = $('tool-title');
   title.dataset.key = tool.key; title.dataset.projectId = tool.projectID;
@@ -222,6 +234,17 @@ async function createWithAI() {
     });
     if (kept) { $('new-name').value = ''; engine.sync(); }
   } finally { $('ai-create').disabled = false; $('ai-status').textContent = ''; }
+}
+
+// One command on the Desktop's PC; its output is shown here and kept nowhere.
+async function runCommand() {
+  const command = $('terminal-command').value;
+  if (!command.trim() || $('terminal-run').disabled) return;
+  $('terminal-run').disabled = true;
+  try {
+    const kept = await act(async () => { const result = await engine.runTerminal(command); terminalRuns = [...terminalRuns, {command, ...result}].slice(-50); });
+    if (kept) $('terminal-command').value = '';
+  } finally { $('terminal-run').disabled = false; await render().catch(message); $('terminal-log').scrollTop = $('terminal-log').scrollHeight; $('terminal-command').focus(); }
 }
 
 function exportTool() {
@@ -336,6 +359,9 @@ async function boot() {
   });
   $('stop-dictation').onclick = () => { voice?.stop(); };
   $('ai-create').onclick = () => createWithAI();
+  $('terminal-open').onclick = () => { terminalOpen = !terminalOpen; render().catch(message); if (terminalOpen) $('terminal-command').focus(); };
+  $('terminal-close').onclick = () => { terminalOpen = false; render().catch(message); $('terminal-open').focus(); };
+  $('terminal-form').onsubmit = event => { event.preventDefault(); runCommand(); };
   $('ai-save').onclick = () => act(async () => {
     const key = $('ai-key').value.trim();
     if (!/^sk-ant-\S{8,}$/.test(key)) throw new Error('ai_key_format');

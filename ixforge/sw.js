@@ -1,8 +1,10 @@
-const CACHE = 'ix-workshop-shell-e8771a595e3f24d1';
+const CACHE = 'ix-workshop-shell-d0c8b78ecadbbc57';
 // Paths are relative to this worker's folder, so the client runs from any folder (the Desktop's, or a static host's).
 const SHELL = ['./', './style.css', './app.js', './sync.js', './voice.js', './updates.js', './widgets.js', './ai.js', './vendor/lit-all.min.js', './branding.json', './vendor/i18next.min.js', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const SHELL_PATHS = SHELL.map(path => new URL(path, self.location).pathname);
-self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL))));
+// Static hosts let browsers keep files for minutes (GitHub Pages: max-age=600): a new version must fetch its files from
+// the network, never the browser's copies of the previous version.
+self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL.map(path => new Request(path, {cache: 'reload'}))))));
 self.addEventListener('activate', event => event.waitUntil((async () => {
   for (const key of await caches.keys()) if (key.startsWith('ix-workshop-shell-') && key !== CACHE) await caches.delete(key);
   await self.clients.claim();

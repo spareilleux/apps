@@ -8,6 +8,7 @@
   <div class="preferences">
     <button id="update" class="icon" hidden data-icon="update" data-i18n-label="update"></button>
     <button id="install" class="icon" hidden data-icon="install" data-i18n-label="install"></button>
+    <button id="terminal-open" class="icon" hidden data-icon="terminal" data-i18n-label="terminal"></button>
     <button id="surface-open" class="icon" data-icon="surface" data-i18n-label="surfaceOpen"></button>
     <button id="devices-open" class="icon" data-icon="devices" data-i18n-label="devices"></button>
     <button id="lang" class="icon text" data-i18n-label="language"></button>
@@ -54,6 +55,12 @@
       <p id="local-kept" class="hint" hidden data-i18n="ixletLocalKept"></p>
     </section>
     <section id="surface" hidden></section>
+    <section id="terminal" hidden>
+      <header class="stage-head"><h2 data-i18n="terminal"></h2><span class="status" data-i18n="terminalWho"></span><button id="terminal-close" class="icon ghost" data-icon="x" data-i18n-label="close"></button></header>
+      <div id="terminal-log" class="terminal-log" role="log" aria-live="polite"></div>
+      <form id="terminal-form" class="terminal-line"><input id="terminal-command" maxlength="4096" autocomplete="off" autocapitalize="off" spellcheck="false" data-i18n-label="terminalCommand"><button id="terminal-run" type="submit" data-icon="terminal"><span data-i18n="terminalRun"></span></button></form>
+      <p class="hint" data-i18n="terminalHelp"></p>
+    </section>
   </main>
 </div>
 <aside id="devices" class="drawer" hidden data-i18n-label="devices">

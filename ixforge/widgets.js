@@ -28,6 +28,7 @@ const PATHS = {
   update: 'M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5',
   install: 'M12 3v10M8 9l4 4l4-4M4 15v5h16v-5',
   settings: 'M12 9a3 3 0 1 0 0 6a3 3 0 1 0 0-6M10.3 3h3.4l.5 2.4l1.9 1.1l2.3-.8l1.7 2.9l-1.8 1.6v2.2l1.8 1.6l-1.7 2.9l-2.3-.8l-1.9 1.1l-.5 2.4h-3.4l-.5-2.4l-1.9-1.1l-2.3.8l-1.7-2.9l1.8-1.6v-2.2L3.9 8.6l1.7-2.9l2.3.8l1.9-1.1z',
+  terminal: 'M3 5h18v14H3zM7 9l3 3l-3 3M12 15h5',
   spark: 'M12 3l2 6l6 2l-6 2l-2 6l-2-6l-6-2l6-2zM19 3v4M17 5h4',
 };
 export const icon = name => html`<svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${svg`<path d=${PATHS[name]}></path>`}</svg>`;

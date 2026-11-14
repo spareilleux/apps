@@ -159,15 +159,21 @@ export class Replica {
 }
 
 export class SyncEngine {
-  constructor(replica, onChange = () => {}) { this.replica = replica; this.onChange = onChange; this.status = 'notConnected'; this.deniedStatus = ''; this.running = null; this.admin = false; }
+  constructor(replica, onChange = () => {}) { this.replica = replica; this.onChange = onChange; this.status = 'notConnected'; this.deniedStatus = ''; this.running = null; this.admin = false; this.terminal = false; }
   // The device the owner linked (or granted) administers the others from the app (admin.go).
   devices() { return this.api('devices'); }
   invite() { return this.api('devices/invite', {method: 'POST', body: '{}'}); }
   decide(id, status) { return this.api('devices/' + encodeURIComponent(id) + '/' + status, {method: 'POST', body: '{}'}); }
-  async api(path, options = {}) {
+  // The terminal (terminal.go) runs a command on the Desktop's PC. A command is not repeatable: an uncertain reply is
+  // reported as such and never sent again.
+  runTerminal(command) {
+    return this.api('terminal', {method: 'POST', body: JSON.stringify({command}), timeout: 45000})
+      .catch(error => { if (error instanceof HTTPError && error.status < 500) throw error; throw new Error('terminal_uncertain'); });
+  }
+  async api(path, {timeout = 15000, ...options} = {}) {
     const state = await this.replica.read();
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 15000);
+    const timer = setTimeout(() => controller.abort(), timeout);
     try {
       const response = await fetch('api/' + path, {...options, signal: controller.signal, cache: 'no-store', headers: {'Content-Type': 'application/json', ...(state.token ? {'Authorization': 'Bearer ' + state.token} : {}), ...options.headers}});
       let data;
@@ -219,7 +225,7 @@ export class SyncEngine {
       const me = await this.api('me');
       if (me.protocol !== 'workshop/1' || typeof me.store_id !== 'string') throw new Error('connection_uncertain');
       if (me.store_id !== state.storeID) throw new Error('store_changed');
-      this.status = 'connected'; this.deniedStatus = ''; this.admin = me.admin === true;
+      this.status = 'connected'; this.deniedStatus = ''; this.admin = me.admin === true; this.terminal = me.terminal === true;
       if (typeof me.device?.name === 'string' && me.device.name !== state.pairedName) await this.replica.change(s => { s.pairedName = me.device.name; });
       // Nothing to press: every changed project without a conflict is queued for the Desktop.
       state = await this.replica.change(s => { for (const [id, p] of Object.entries(s.projects)) if (p.dirty && !p.conflict) enqueueInto(s, id); });
